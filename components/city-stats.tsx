@@ -1,8 +1,8 @@
 import { Star, DollarSign, Wifi, Shield, Users } from "lucide-react";
-import { CityDetails } from "@/lib/types";
+import { CityWithDetails } from "@/lib/database.types";
 
 interface CityStatsProps {
-  city: CityDetails;
+  city: CityWithDetails;
 }
 
 export default function CityStats({ city }: CityStatsProps) {
@@ -42,7 +42,7 @@ export default function CityStats({ city }: CityStatsProps) {
     {
       icon: Users,
       label: "현재 노마드",
-      value: city.nomads_now,
+      value: city.city_stats?.nomads_now || 0,
       suffix: "명",
       color: "text-pink-400",
       bgColor: "bg-pink-500/10",

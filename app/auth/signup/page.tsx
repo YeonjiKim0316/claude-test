@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { signup } from './actions'
 
-export default function SignupPage({
+export default async function SignupPage({
   searchParams,
 }: {
-  searchParams: { error?: string; success?: string }
+  searchParams: Promise<{ error?: string; success?: string }>
 }) {
+  const params = await searchParams;
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 px-4">
       <div className="w-full max-w-md">
@@ -19,13 +21,13 @@ export default function SignupPage({
             </p>
           </div>
 
-          {searchParams.error && (
+          {params.error && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-              <p className="text-red-400 text-sm">{searchParams.error}</p>
+              <p className="text-red-400 text-sm">{params.error}</p>
             </div>
           )}
 
-          {searchParams.success && (
+          {params.success && (
             <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
               <p className="text-green-400 text-sm">
                 Account created! Please check your email to confirm your account.

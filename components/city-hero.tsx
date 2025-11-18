@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
-import { CityDetails } from "@/lib/types";
+import { CityWithDetails } from "@/lib/database.types";
 
 interface CityHeroProps {
-  city: CityDetails;
+  city: CityWithDetails;
 }
 
 export default function CityHero({ city }: CityHeroProps) {
