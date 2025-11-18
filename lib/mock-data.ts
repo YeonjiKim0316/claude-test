@@ -1,4 +1,4 @@
-import { City } from "./types";
+import { City, CityDetails } from "./types";
 
 export const mockCities: City[] = [
   {
@@ -390,5 +390,504 @@ export const mockCities: City[] = [
     koreanRegion: "충청도",
     environment: ["코워킹 필수"],
     bestSeason: "겨울",
+  },
+];
+
+// 도시 상세 정보
+export const mockCityDetails: CityDetails[] = [
+  {
+    ...mockCities[0],
+    description: "제주는 대한민국 최고의 디지털 노마드 천국입니다. 아름다운 자연환경과 빠른 인터넷, 그리고 다양한 카페와 코워킹 스페이스가 조화롭게 어우러진 곳입니다. 한라산, 해변, 그리고 독특한 문화가 여러분의 워케이션을 더욱 특별하게 만들어줄 것입니다.",
+    highlights: [
+      "세계적 수준의 자연경관과 청정 공기",
+      "디지털 노마드 커뮤니티가 활발하게 형성됨",
+      "서울에서 1시간 거리의 접근성",
+      "연중 온화한 기후로 사계절 작업 가능",
+      "다양한 카페와 코워킹 스페이스"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1590940872109-665c96c2b7c9?w=800&q=80",
+      "https://images.unsplash.com/photo-1590941158703-5e9ff6c09103?w=800&q=80",
+      "https://images.unsplash.com/photo-1590940870219-6c2e1c5e3d7b?w=800&q=80",
+      "https://images.unsplash.com/photo-1590941158703-48c0f6e5d2d8?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 1000000,
+      food: 600000,
+      transportation: 200000,
+      utilities: 200000,
+    },
+    pros: [
+      "자연 속에서 집중도 높은 작업 환경",
+      "다양한 액티비티로 워라밸 완벽",
+      "빠른 인터넷과 우수한 인프라"
+    ],
+    cons: [
+      "서울 대비 높은 물가",
+      "제한적인 대중교통",
+      "여름철 관광객 과밀"
+    ]
+  },
+  {
+    ...mockCities[1],
+    description: "부산은 한국 제2의 도시로 바다와 산, 도심이 조화롭게 어우러진 곳입니다. 해운대, 광안리 등 아름다운 해변에서 일하며 저녁에는 신선한 해산물을 즐길 수 있습니다. 빠른 인터넷과 저렴한 생활비로 장기 체류에 적합합니다.",
+    highlights: [
+      "해변 카페에서 바다를 보며 작업 가능",
+      "서울 대비 합리적인 생활비",
+      "풍부한 해산물과 독특한 음식 문화",
+      "국제 영화제와 다양한 문화 행사",
+      "KTX로 서울 2시간 30분 거리"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1590241441485-f95674b94ff7?w=800&q=80",
+      "https://images.unsplash.com/photo-1590240369866-31c13e1e8ccd?w=800&q=80",
+      "https://images.unsplash.com/photo-1590240370723-a681c77e9936?w=800&q=80",
+      "https://images.unsplash.com/photo-1590240370743-3a681d19c9e8?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 900000,
+      food: 500000,
+      transportation: 200000,
+      utilities: 200000,
+    },
+    pros: [
+      "바다 전망의 작업 환경",
+      "저렴한 생활비와 맛있는 음식",
+      "온화한 기후로 연중 쾌적"
+    ],
+    cons: [
+      "서울 대비 적은 코워킹 스페이스",
+      "여름 관광 성수기 혼잡",
+      "일부 지역 교통 혼잡"
+    ]
+  },
+  {
+    ...mockCities[2],
+    description: "강남은 한국의 비즈니스와 기술 중심지입니다. 최첨단 인프라, 무수히 많은 카페와 코워킹 스페이스, 그리고 활발한 스타트업 생태계가 형성되어 있습니다. 네트워킹과 비즈니스 기회를 찾는 노마드에게 최적의 장소입니다.",
+    highlights: [
+      "국내 최고 속도의 인터넷 (평균 300Mbps)",
+      "24시간 운영하는 다양한 카페와 코워킹",
+      "글로벌 스타트업 생태계와 네트워킹",
+      "편리한 대중교통과 뛰어난 인프라",
+      "미쿨린 맛집과 고급 레스토랑"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1601029397162-65f0a8223ed3?w=800&q=80",
+      "https://images.unsplash.com/photo-1601029397254-bb47c9b1fe32?w=800&q=80",
+      "https://images.unsplash.com/photo-1601029397346-c94f5e9f9d3f?w=800&q=80",
+      "https://images.unsplash.com/photo-1601029397438-d0e8e8f47c8e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 2000000,
+      food: 800000,
+      transportation: 300000,
+      utilities: 400000,
+    },
+    pros: [
+      "최고의 비즈니스 네트워킹 환경",
+      "뛰어난 인프라와 편의시설",
+      "다양한 문화 생활과 엔터테인먼트"
+    ],
+    cons: [
+      "높은 생활비와 임대료",
+      "복잡한 교통과 사람이 많음",
+      "경쟁적인 분위기"
+    ]
+  },
+  {
+    ...mockCities[3],
+    description: "강릉은 동해안의 아름다운 해변 도시로 조용하고 평화로운 작업 환경을 제공합니다. 커피의 도시답게 수준 높은 카페가 많으며, 자연 속에서 집중하며 일하고 싶은 노마드에게 완벽합니다.",
+    highlights: [
+      "커피 거리와 수준 높은 로스터리 카페",
+      "경포대 해변에서 바다를 보며 작업",
+      "저렴한 생활비로 장기 체류 적합",
+      "설악산과 오대산 등 자연 탐방",
+      "신선한 해산물과 맛집"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800&q=80",
+      "https://images.unsplash.com/photo-1583037189937-8c3b3b7e0d6e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583037190025-9d1a7e8c9e3d?w=800&q=80",
+      "https://images.unsplash.com/photo-1583037190113-0d8e8e8c8e8e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 700000,
+      food: 400000,
+      transportation: 150000,
+      utilities: 150000,
+    },
+    pros: [
+      "조용하고 집중하기 좋은 환경",
+      "저렴한 생활비",
+      "커피와 해변의 완벽한 조화"
+    ],
+    cons: [
+      "제한적인 코워킹 스페이스",
+      "서울까지 거리가 멀음",
+      "겨울철 추운 날씨"
+    ]
+  },
+  {
+    ...mockCities[4],
+    description: "전주는 한국의 전통문화와 음식의 중심지입니다. 한옥마을의 아름다운 경관과 함께 전주비빔밥을 비롯한 다양한 먹거리를 즐기며 작업할 수 있습니다. 여유로운 분위기와 저렴한 생활비가 매력적입니다.",
+    highlights: [
+      "한옥마을의 전통 문화 체험",
+      "전주비빔밥 등 미식의 도시",
+      "저렴한 생활비로 장기 체류 적합",
+      "감성 넘치는 카페와 작업 공간",
+      "서울에서 KTX 2시간 거리"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583387187409-e5d1e4cd163a?w=800&q=80",
+      "https://images.unsplash.com/photo-1583387187497-0f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583387187585-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583387187673-2f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 650000,
+      food: 350000,
+      transportation: 150000,
+      utilities: 150000,
+    },
+    pros: [
+      "전통과 현대가 조화로운 환경",
+      "저렴하고 맛있는 음식",
+      "여유로운 작업 분위기"
+    ],
+    cons: [
+      "제한적인 IT 인프라",
+      "코워킹 스페이스 부족",
+      "대중교통 불편"
+    ]
+  },
+  {
+    ...mockCities[5],
+    description: "송도는 대한민국의 계획도시로 최첨단 스마트시티 인프라를 자랑합니다. 넓은 공원과 해변, 그리고 현대적인 건물들이 조화를 이루며, 조용하면서도 편리한 작업 환경을 제공합니다.",
+    highlights: [
+      "스마트시티 인프라와 빠른 인터넷",
+      "센트럴파크와 해변 산책로",
+      "인천공항 20분 거리로 해외 출장 편리",
+      "현대적인 코워킹 스페이스",
+      "서울 강남까지 40분"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583211348652-de57b68e0969?w=800&q=80",
+      "https://images.unsplash.com/photo-1583211348740-e5d8e8f9e9e9?w=800&q=80",
+      "https://images.unsplash.com/photo-1583211348828-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583211348916-2f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 1200000,
+      food: 500000,
+      transportation: 250000,
+      utilities: 250000,
+    },
+    pros: [
+      "최첨단 인프라와 깨끗한 환경",
+      "공항 접근성 우수",
+      "조용하고 안전한 거주 환경"
+    ],
+    cons: [
+      "아직 발전 중인 상권",
+      "밤 문화와 엔터테인먼트 제한적",
+      "서울 대비 높은 임대료"
+    ]
+  },
+  {
+    ...mockCities[6],
+    description: "대구는 한국의 중심부에 위치한 대도시로 저렴한 생활비와 좋은 날씨가 특징입니다. 빠른 인터넷과 다양한 카페, 그리고 친절한 사람들이 여러분을 환영합니다.",
+    highlights: [
+      "저렴한 생활비로 장기 체류 적합",
+      "맑고 화창한 날씨",
+      "서울, 부산 중간 위치로 접근성 좋음",
+      "다양한 카페와 작업 공간",
+      "풍부한 지역 음식 문화"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=800&q=80",
+      "https://images.unsplash.com/photo-1584646098466-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1584646098554-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1584646098642-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 750000,
+      food: 400000,
+      transportation: 180000,
+      utilities: 170000,
+    },
+    pros: [
+      "저렴한 생활비",
+      "좋은 날씨와 쾌적한 환경",
+      "중부권 접근성 우수"
+    ],
+    cons: [
+      "여름 매우 더운 날씨",
+      "서울 대비 적은 글로벌 커뮤니티",
+      "코워킹 스페이스 제한적"
+    ]
+  },
+  {
+    ...mockCities[7],
+    description: "대전은 한국의 과학기술 중심지로 연구소와 대학이 많아 지적인 분위기가 넘칩니다. 저렴한 생활비와 편리한 교통, 그리고 좋은 교육 환경이 장점입니다.",
+    highlights: [
+      "KAIST, ETRI 등 과학기술 허브",
+      "저렴한 생활비와 임대료",
+      "서울 1시간, 전국 2시간 이내 접근",
+      "다양한 코워킹 스페이스와 카페",
+      "깨끗한 공기와 공원"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583362225097-f6d7e9b2e6cf?w=800&q=80",
+      "https://images.unsplash.com/photo-1583362225185-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583362225273-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583362225361-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 800000,
+      food: 450000,
+      transportation: 180000,
+      utilities: 170000,
+    },
+    pros: [
+      "과학기술 커뮤니티 활발",
+      "중부권 교통의 요지",
+      "저렴한 생활비"
+    ],
+    cons: [
+      "문화생활 옵션 제한적",
+      "젊은 층 인구 적음",
+      "관광 명소 부족"
+    ]
+  },
+  {
+    ...mockCities[8],
+    description: "속초는 동해안의 작은 항구도시로 설악산과 바다가 만나는 곳입니다. 자연을 사랑하는 노마드에게 천국 같은 곳으로, 신선한 해산물과 아름다운 풍경을 즐기며 작업할 수 있습니다.",
+    highlights: [
+      "설악산 국립공원 인접",
+      "청정 해변과 신선한 해산물",
+      "저렴한 생활비",
+      "조용하고 평화로운 환경",
+      "감성 카페와 게스트하우스"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1590553449945-8b91d1a8873a?w=800&q=80",
+      "https://images.unsplash.com/photo-1590553450033-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1590553450121-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1590553450209-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 680000,
+      food: 370000,
+      transportation: 150000,
+      utilities: 150000,
+    },
+    pros: [
+      "자연 속 평화로운 환경",
+      "저렴한 생활비",
+      "신선한 해산물과 맛집"
+    ],
+    cons: [
+      "인터넷 속도 제한적",
+      "서울까지 거리가 멀음",
+      "겨울철 매우 추움"
+    ]
+  },
+  {
+    ...mockCities[9],
+    description: "광주는 전라남도의 중심 도시로 예술과 문화가 살아있는 곳입니다. 비엔날레와 다양한 문화 행사, 그리고 맛있는 음식으로 유명합니다. 저렴한 생활비와 여유로운 분위기가 매력적입니다.",
+    highlights: [
+      "광주비엔날레 등 문화 예술 중심지",
+      "저렴하고 맛있는 음식",
+      "친절한 사람들과 여유로운 분위기",
+      "다양한 카페와 작업 공간",
+      "5.18 민주화운동 역사 탐방"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583352294107-9b5e2b7e7dc8?w=800&q=80",
+      "https://images.unsplash.com/photo-1583352294195-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583352294283-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583352294371-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 720000,
+      food: 380000,
+      transportation: 180000,
+      utilities: 170000,
+    },
+    pros: [
+      "예술과 문화가 풍부한 환경",
+      "저렴한 생활비",
+      "맛있는 지역 음식"
+    ],
+    cons: [
+      "IT 인프라 제한적",
+      "코워킹 스페이스 부족",
+      "서울까지 거리가 멀음"
+    ]
+  },
+  {
+    ...mockCities[10],
+    description: "홍대는 젊음과 창의성이 넘치는 서울의 문화 중심지입니다. 24시간 활기찬 분위기, 무수히 많은 카페와 코워킹 스페이스, 그리고 다양한 문화 이벤트가 여러분을 기다립니다.",
+    highlights: [
+      "24시간 운영 카페와 코워킹 스페이스",
+      "활발한 크리에이터 커뮤니티",
+      "라이브 음악과 문화 공연",
+      "다양한 국제 음식과 맛집",
+      "지하철 2호선, 공항철도 접근성"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583413958671-4aaf23b1a5b6?w=800&q=80",
+      "https://images.unsplash.com/photo-1583413958759-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583413958847-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583413958935-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 1500000,
+      food: 700000,
+      transportation: 300000,
+      utilities: 300000,
+    },
+    pros: [
+      "크리에이터를 위한 완벽한 환경",
+      "다양한 문화 생활",
+      "활발한 네트워킹 기회"
+    ],
+    cons: [
+      "높은 생활비",
+      "시끄러운 환경",
+      "주말 과도한 혼잡"
+    ]
+  },
+  {
+    ...mockCities[11],
+    description: "경주는 천년 고도로 역사와 문화가 살아 숨쉬는 도시입니다. 불국사, 석굴암 등 세계문화유산을 품고 있으며, 조용하고 평화로운 환경에서 작업하며 역사 탐방을 즐길 수 있습니다.",
+    highlights: [
+      "유네스코 세계문화유산 탐방",
+      "조용하고 평화로운 작업 환경",
+      "저렴한 생활비",
+      "전통 한옥 카페와 게스트하우스",
+      "부산까지 1시간 거리"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583423910890-31a03e843c8d?w=800&q=80",
+      "https://images.unsplash.com/photo-1583423910978-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583423911066-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583423911154-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 620000,
+      food: 330000,
+      transportation: 150000,
+      utilities: 150000,
+    },
+    pros: [
+      "역사와 문화가 풍부한 환경",
+      "저렴한 생활비",
+      "평화롭고 안전한 분위기"
+    ],
+    cons: [
+      "코워킹 스페이스 매우 제한적",
+      "젊은 층 커뮤니티 부족",
+      "밤 문화와 엔터테인먼트 제한적"
+    ]
+  },
+  {
+    ...mockCities[12],
+    description: "춘천은 강원도의 주도로 소양호와 춘천호 등 아름다운 자연경관이 특징입니다. 닭갈비로 유명하며, 서울에서 가까워 주말 여행도 편리합니다. 조용한 환경에서 작업하기 좋습니다.",
+    highlights: [
+      "소양호와 춘천호의 아름다운 경관",
+      "닭갈비와 막국수 맛집",
+      "서울 ITX-청춘 1시간 거리",
+      "저렴한 생활비",
+      "조용하고 깨끗한 환경"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583414069853-f6f41df6e0ff?w=800&q=80",
+      "https://images.unsplash.com/photo-1583414069941-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583414070029-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583414070117-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 690000,
+      food: 360000,
+      transportation: 160000,
+      utilities: 170000,
+    },
+    pros: [
+      "자연 속 평화로운 환경",
+      "서울 접근성 우수",
+      "저렴한 생활비"
+    ],
+    cons: [
+      "코워킹 스페이스 제한적",
+      "인터넷 속도 보통",
+      "문화생활 옵션 적음"
+    ]
+  },
+  {
+    ...mockCities[13],
+    description: "여수는 남해안의 아름다운 항구도시로 야경이 아름답기로 유명합니다. 신선한 해산물과 따뜻한 기후, 그리고 평화로운 섬 여행을 즐기며 작업할 수 있습니다.",
+    highlights: [
+      "아름다운 여수 밤바다 야경",
+      "신선한 해산물과 맛집",
+      "오동도, 향일암 등 관광 명소",
+      "따뜻한 기후로 겨울에도 쾌적",
+      "저렴한 생활비"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583423922723-8b22e7d3ab00?w=800&q=80",
+      "https://images.unsplash.com/photo-1583423922811-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583423922899-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583423922987-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 710000,
+      food: 380000,
+      transportation: 170000,
+      utilities: 160000,
+    },
+    pros: [
+      "아름다운 야경과 자연",
+      "신선한 해산물",
+      "따뜻한 기후"
+    ],
+    cons: [
+      "서울까지 거리가 멀음",
+      "코워킹 스페이스 거의 없음",
+      "인터넷 속도 보통"
+    ]
+  },
+  {
+    ...mockCities[14],
+    description: "천안은 충청남도의 교통 요충지로 서울과 대전 중간에 위치합니다. KTX 역이 있어 전국 어디든 이동이 편리하며, 저렴한 생활비로 장기 체류에 적합합니다.",
+    highlights: [
+      "KTX 천안아산역으로 전국 접근성 우수",
+      "서울 40분, 대전 20분 거리",
+      "저렴한 생활비와 임대료",
+      "삼성디스플레이 등 IT 기업 인접",
+      "다양한 코워킹 스페이스"
+    ],
+    gallery_images: [
+      "https://images.unsplash.com/photo-1583424165577-f2d4b4a6f9f6?w=800&q=80",
+      "https://images.unsplash.com/photo-1583424165665-1f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583424165753-2f8e8f9e9e9e?w=800&q=80",
+      "https://images.unsplash.com/photo-1583424165841-3f8e8f9e9e9e?w=800&q=80",
+    ],
+    cost_breakdown: {
+      accommodation: 740000,
+      food: 410000,
+      transportation: 190000,
+      utilities: 140000,
+    },
+    pros: [
+      "전국 접근성 최고",
+      "저렴한 생활비",
+      "IT 기업 인접"
+    ],
+    cons: [
+      "관광 명소 부족",
+      "문화생활 제한적",
+      "젊은 층 커뮤니티 적음"
+    ]
   },
 ];
