@@ -132,7 +132,7 @@ export default function CityCard({ city }: CityCardProps) {
             </div>
 
             {/* Like/Dislike Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
               <button
                 onClick={handleLikeClick}
                 className={cn(
@@ -163,16 +163,16 @@ export default function CityCard({ city }: CityCardProps) {
                     : "bg-slate-700/30 border border-gray-600/20 hover:bg-slate-700/50"
                 )}
               >
-                <ThumbsDown className={cn(
-                  "h-4 w-4",
-                  disliked ? "text-red-500" : "text-gray-400"
-                )} />
                 <span className={cn(
                   "text-sm font-medium",
                   disliked ? "text-red-400" : "text-gray-400"
                 )}>
                   {dislikeCount}
                 </span>
+                <ThumbsDown className={cn(
+                  "h-4 w-4",
+                  disliked ? "text-red-500" : "text-gray-400"
+                )} />
               </button>
             </div>
           </div>
