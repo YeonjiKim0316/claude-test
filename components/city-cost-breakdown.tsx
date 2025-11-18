@@ -1,8 +1,8 @@
 import { Wallet, Home, UtensilsCrossed, Bus, Zap } from "lucide-react";
-import { CityDetails } from "@/lib/types";
+import { CityWithDetails } from "@/lib/database.types";
 
 interface CityCostBreakdownProps {
-  city: CityDetails;
+  city: CityWithDetails;
 }
 
 export default function CityCostBreakdown({ city }: CityCostBreakdownProps) {
@@ -10,28 +10,28 @@ export default function CityCostBreakdown({ city }: CityCostBreakdownProps) {
     {
       icon: Home,
       label: "숙박비",
-      amount: city.cost_breakdown.accommodation,
+      amount: city.cost_breakdown?.accommodation || 0,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
     },
     {
       icon: UtensilsCrossed,
       label: "식비",
-      amount: city.cost_breakdown.food,
+      amount: city.cost_breakdown?.food || 0,
       color: "text-orange-400",
       bgColor: "bg-orange-500/10",
     },
     {
       icon: Bus,
       label: "교통비",
-      amount: city.cost_breakdown.transportation,
+      amount: city.cost_breakdown?.transportation || 0,
       color: "text-green-400",
       bgColor: "bg-green-500/10",
     },
     {
       icon: Zap,
       label: "공과금",
-      amount: city.cost_breakdown.utilities,
+      amount: city.cost_breakdown?.utilities || 0,
       color: "text-yellow-400",
       bgColor: "bg-yellow-500/10",
     },

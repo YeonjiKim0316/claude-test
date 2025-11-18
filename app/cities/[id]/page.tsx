@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { mockCityDetails } from "@/lib/mock-data";
+import { getCityBySlug } from "@/app/actions/cities";
 import CityHero from "@/components/city-hero";
 import CityStats from "@/components/city-stats";
 import CityDescription from "@/components/city-description";
 import CityCostBreakdown from "@/components/city-cost-breakdown";
 import CityGallery from "@/components/city-gallery";
+
+export const revalidate = 300; // Revalidate every 5 minutes
 
 interface PageProps {
   params: Promise<{
@@ -17,12 +19,14 @@ interface PageProps {
 export default async function CityDetailPage({ params }: PageProps) {
   const { id } = await params;
 
-  // slug로 도시 찾기
-  const city = mockCityDetails.find((c) => c.slug === id);
+  // Fetch city from Supabase by slug
+  const result = await getCityBySlug(id);
 
-  if (!city) {
+  if (!result.success || !result.data) {
     notFound();
   }
+
+  const city = result.data;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">

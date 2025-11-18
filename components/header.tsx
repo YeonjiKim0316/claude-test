@@ -26,7 +26,10 @@ export default async function Header() {
                   <span className="text-sm text-gray-300">{user.email}</span>
                 </div>
                 <form action={signOut}>
-                  <button className="hidden md:block px-5 py-2 text-sm font-medium border border-purple-500/30 text-gray-300 rounded-lg hover:bg-slate-800/50 hover:border-purple-500/50 transition-all flex items-center gap-2">
+                  <button
+                    type="submit"
+                    className="hidden md:flex items-center gap-2 px-5 py-2 text-sm font-medium border border-purple-500/30 text-gray-300 rounded-lg hover:bg-slate-800/50 hover:border-purple-500/50 transition-all"
+                  >
                     <LogOut className="h-4 w-4" />
                     로그아웃
                   </button>

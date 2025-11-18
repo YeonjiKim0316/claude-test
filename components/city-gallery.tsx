@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Camera } from "lucide-react";
-import { CityDetails } from "@/lib/types";
+import { CityWithDetails } from "@/lib/database.types";
 
 interface CityGalleryProps {
-  city: CityDetails;
+  city: CityWithDetails;
 }
 
 export default function CityGallery({ city }: CityGalleryProps) {
@@ -19,7 +19,7 @@ export default function CityGallery({ city }: CityGalleryProps) {
 
       {/* Gallery Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {city.gallery_images.map((image, index) => (
+        {city.city_details?.gallery_images?.map((image, index) => (
           <div
             key={index}
             className="group relative aspect-video overflow-hidden rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
@@ -37,10 +37,10 @@ export default function CityGallery({ city }: CityGalleryProps) {
 
             {/* Image Number */}
             <div className="absolute bottom-4 right-4 bg-purple-500/80 backdrop-blur-sm text-white text-sm font-semibold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {index + 1} / {city.gallery_images.length}
+              {index + 1} / {city.city_details?.gallery_images?.length || 0}
             </div>
           </div>
-        ))}
+        )) || <div className="text-gray-400 col-span-full text-center py-8">갤러리 이미지가 없습니다.</div>}
       </div>
 
       {/* Info Text */}
