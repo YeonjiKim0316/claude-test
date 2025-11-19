@@ -4,66 +4,119 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, MessageSquare, ThumbsUp, ThumbsDown } from "lucide-react";
-import { City } from "@/lib/types";
+import { CityListItem } from "@/lib/database.types";
 import { cn } from "@/lib/utils";
+import { toggleLike } from "@/app/actions/interactions";
 
 interface CityCardProps {
-  city: City;
+  city: CityListItem;
+  viewMode?: 'grid' | 'list';
 }
 
-export default function CityCard({ city }: CityCardProps) {
+export default function CityCard({ city, viewMode = 'grid' }: CityCardProps) {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
-  const [likeCount, setLikeCount] = useState(city.likes);
-  const [dislikeCount, setDislikeCount] = useState(city.dislikes);
+  const [likeCount, setLikeCount] = useState(city.city_stats?.likes || 0);
+  const [dislikeCount, setDislikeCount] = useState(city.city_stats?.dislikes || 0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLikeClick = (e: React.MouseEvent) => {
+  const handleLikeClick = async (e: React.MouseEvent) => {
     e.preventDefault(); // Link 클릭 방지
     e.stopPropagation();
 
-    if (liked) {
-      // 이미 좋아요 상태면 취소
-      setLiked(false);
-      setLikeCount(likeCount - 1);
-    } else {
-      // 좋아요 활성화
-      setLiked(true);
-      setLikeCount(likeCount + 1);
+    if (isLoading) return;
+
+    try {
+      setIsLoading(true);
+
+      // Optimistic update
+      const newLiked = !liked;
+      setLiked(newLiked);
+      setLikeCount(newLiked ? likeCount + 1 : likeCount - 1);
 
       // 싫어요가 활성화되어 있었다면 해제
-      if (disliked) {
+      if (disliked && newLiked) {
         setDisliked(false);
         setDislikeCount(dislikeCount - 1);
       }
+
+      // API 호출
+      const result = await toggleLike(city.id, true);
+
+      if (!result.success) {
+        // 실패 시 롤백
+        setLiked(liked);
+        setLikeCount(likeCount);
+        if (disliked && newLiked) {
+          setDisliked(true);
+          setDislikeCount(dislikeCount);
+        }
+        alert(result.error || '좋아요 처리에 실패했습니다. 로그인이 필요합니다.');
+      }
+    } catch (error) {
+      console.error('Like error:', error);
+      // 에러 시 롤백
+      setLiked(liked);
+      setLikeCount(likeCount);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleDislikeClick = (e: React.MouseEvent) => {
+  const handleDislikeClick = async (e: React.MouseEvent) => {
     e.preventDefault(); // Link 클릭 방지
     e.stopPropagation();
 
-    if (disliked) {
-      // 이미 싫어요 상태면 취소
-      setDisliked(false);
-      setDislikeCount(dislikeCount - 1);
-    } else {
-      // 싫어요 활성화
-      setDisliked(true);
-      setDislikeCount(dislikeCount + 1);
+    if (isLoading) return;
+
+    try {
+      setIsLoading(true);
+
+      // Optimistic update
+      const newDisliked = !disliked;
+      setDisliked(newDisliked);
+      setDislikeCount(newDisliked ? dislikeCount + 1 : dislikeCount - 1);
 
       // 좋아요가 활성화되어 있었다면 해제
-      if (liked) {
+      if (liked && newDisliked) {
         setLiked(false);
         setLikeCount(likeCount - 1);
       }
+
+      // API 호출
+      const result = await toggleLike(city.id, false);
+
+      if (!result.success) {
+        // 실패 시 롤백
+        setDisliked(disliked);
+        setDislikeCount(dislikeCount);
+        if (liked && newDisliked) {
+          setLiked(true);
+          setLikeCount(likeCount);
+        }
+        alert(result.error || '싫어요 처리에 실패했습니다. 로그인이 필요합니다.');
+      }
+    } catch (error) {
+      console.error('Dislike error:', error);
+      // 에러 시 롤백
+      setDisliked(disliked);
+      setDislikeCount(dislikeCount);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <Link href={`/cities/${city.slug}`}>
-      <div className="group border border-purple-500/20 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-purple-500/20 hover:border-purple-500/40 transition-all duration-300 bg-slate-800/50 backdrop-blur-sm">
+      <div className={cn(
+        "group border border-purple-500/20 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-purple-500/20 hover:border-purple-500/40 transition-all duration-300 bg-slate-800/50 backdrop-blur-sm",
+        viewMode === 'list' && "flex flex-col md:flex-row"
+      )}>
         {/* Image Section */}
-        <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-slate-700 to-slate-900">
+        <div className={cn(
+          "relative overflow-hidden bg-gradient-to-br from-slate-700 to-slate-900",
+          viewMode === 'grid' ? "h-56 w-full" : "h-48 md:h-auto md:w-80 flex-shrink-0"
+        )}>
           <Image
             src={city.image_url || "/placeholder-city.jpg"}
             alt={city.name_ko}
@@ -85,7 +138,10 @@ export default function CityCard({ city }: CityCardProps) {
         </div>
 
         {/* Content Section */}
-        <div className="p-5">
+        <div className={cn(
+          "p-5",
+          viewMode === 'list' && "flex-1"
+        )}>
           <div className="flex items-start justify-between mb-4">
             <div>
               <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
@@ -112,7 +168,7 @@ export default function CityCard({ city }: CityCardProps) {
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="font-semibold text-gray-300">지역:</span>
-              <span className="text-gray-400">{city.koreanRegion}</span>
+              <span className="text-gray-400">{city.korean_region}</span>
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="font-semibold text-gray-300">환경:</span>
@@ -120,7 +176,7 @@ export default function CityCard({ city }: CityCardProps) {
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="font-semibold text-gray-300">최고 계절:</span>
-              <span className="text-gray-400">{city.bestSeason}</span>
+              <span className="text-gray-400">{city.best_season}</span>
             </div>
           </div>
 
@@ -128,7 +184,7 @@ export default function CityCard({ city }: CityCardProps) {
           <div className="flex items-center justify-between pt-4 border-t border-purple-500/20">
             <div className="flex items-center gap-1.5 text-sm text-gray-400">
               <MessageSquare className="h-4 w-4" />
-              <span>{city.reviews_count} 리뷰</span>
+              <span>{city.city_stats?.reviews_count || 0} 리뷰</span>
             </div>
 
             {/* Like/Dislike Buttons */}

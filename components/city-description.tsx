@@ -1,8 +1,8 @@
 import { Sparkles, CheckCircle, XCircle } from "lucide-react";
-import { CityDetails } from "@/lib/types";
+import { CityWithDetails } from "@/lib/database.types";
 
 interface CityDescriptionProps {
-  city: CityDetails;
+  city: CityWithDetails;
 }
 
 export default function CityDescription({ city }: CityDescriptionProps) {
@@ -17,14 +17,14 @@ export default function CityDescription({ city }: CityDescriptionProps) {
           <h2 className="text-2xl font-bold text-white">주요 특징</h2>
         </div>
         <ul className="space-y-3">
-          {city.highlights.map((highlight, index) => (
+          {city.city_details?.highlights?.map((highlight, index) => (
             <li key={index} className="flex items-start gap-3 text-gray-300">
               <div className="mt-1 flex-shrink-0">
                 <div className="h-2 w-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
               </div>
               <span className="leading-relaxed">{highlight}</span>
             </li>
-          ))}
+          )) || <li className="text-gray-400">정보가 없습니다.</li>}
         </ul>
       </div>
 
@@ -39,12 +39,12 @@ export default function CityDescription({ city }: CityDescriptionProps) {
             <h3 className="text-xl font-bold text-white">장점</h3>
           </div>
           <ul className="space-y-3">
-            {city.pros.map((pro, index) => (
+            {city.city_details?.pros?.map((pro, index) => (
               <li key={index} className="flex items-start gap-3 text-gray-300">
                 <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{pro}</span>
               </li>
-            ))}
+            )) || <li className="text-gray-400">정보가 없습니다.</li>}
           </ul>
         </div>
 
@@ -57,12 +57,12 @@ export default function CityDescription({ city }: CityDescriptionProps) {
             <h3 className="text-xl font-bold text-white">단점</h3>
           </div>
           <ul className="space-y-3">
-            {city.cons.map((con, index) => (
+            {city.city_details?.cons?.map((con, index) => (
               <li key={index} className="flex items-start gap-3 text-gray-300">
                 <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{con}</span>
               </li>
-            ))}
+            )) || <li className="text-gray-400">정보가 없습니다.</li>}
           </ul>
         </div>
       </div>

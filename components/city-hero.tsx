@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
-import { CityDetails } from "@/lib/types";
+import { CityWithDetails } from "@/lib/database.types";
 
 interface CityHeroProps {
-  city: CityDetails;
+  city: CityWithDetails;
 }
 
 export default function CityHero({ city }: CityHeroProps) {
@@ -52,7 +52,7 @@ export default function CityHero({ city }: CityHeroProps) {
 
           {/* Description */}
           <p className="text-lg text-gray-200 max-w-3xl leading-relaxed">
-            {city.description}
+            {city.city_details?.description || ""}
           </p>
         </div>
       </div>
