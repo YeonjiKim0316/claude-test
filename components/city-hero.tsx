@@ -52,7 +52,7 @@ export default function CityHero({ city }: CityHeroProps) {
 
           {/* Description */}
           <p className="text-lg text-gray-200 max-w-3xl leading-relaxed">
-            {city.description}
+            {city.city_details?.description || ""}
           </p>
         </div>
       </div>
